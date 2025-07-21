@@ -1,0 +1,25 @@
+@use "../abstracts/variables";
+
+
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.icon-showcase img {
+  width: 100%;
+  max-width: 12rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+}
+
+*:has(.grid-layout-start) .icon-showcase img {
+  margin: 0;
+}

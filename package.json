@@ -1,0 +1,17 @@
+{
+  "name": "BSR Grup Website",
+  "version": "1.0.0",
+  "description": "Landing Page for BSR Grup Website",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass scss/main.scss dist/css/main.css --style compressed",
+    "watch:css": "sass --watch scss/main.scss:dist/css/main.css --style compressed",
+    "start": "nodemon -e scss -x \"npm run build:css\""
+  },
+  "author": "Furkan Esen",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.66.0",
+    "nodemon": "^3.0.0"
+  }
+}

@@ -1,0 +1,10 @@
+.how-it-works {
+  &__left {
+    display: grid;
+    grid-template-rows: 40rem 1fr;
+    justify-items: left;
+    align-content: space-between;
+    max-width: 66%;
+    gap: 8rem;
+  }
+}

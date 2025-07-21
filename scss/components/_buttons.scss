@@ -1,0 +1,70 @@
+@use "../abstracts/variables";
+
+.btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  font-weight: 500;
+
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid map-get(variables.$colors, gray100);
+    color: map-get(variables.$colors, light);
+    padding: 2rem 3rem;
+    font-size: 1.6rem;
+    border-radius: 1000px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      background-color: map-get(variables.$colors, light);
+      color: map-get(variables.$colors, dark);
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--icon {
+    position: relative;
+    border-radius: 1000px;
+    background-image: map-get(variables.$gradients, primary);
+
+    & svg {
+      fill: map-get(variables.$colors, light);
+      width: 3.6rem;
+      height: 3.6rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+}
+
+.btn-set {
+  display: grid;
+  grid-template-rows: 7.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0;
+
+  &-50 {
+    width: 57.5%;
+  }
+
+  &>* {
+    height: 100%;
+  }
+
+  &>.btn-set-w2 {
+    grid-column: span 2;
+    grid-row: 1 / -1;
+  }
+
+  &>*:not(.btn-set-w2) {
+    aspect-ratio: 1 / 1;
+
+    grid-row: 1 / -1;
+  }
+}

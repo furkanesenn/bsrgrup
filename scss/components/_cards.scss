@@ -1,0 +1,62 @@
+@use "../abstracts/variables";
+
+.card {
+  width: 40rem;
+  aspect-ratio: 1 / 1;
+  background-image: map-get(variables.$gradients, dark-subtle);
+  border: 1px solid rgba(map-get(variables.$colors, primary-light), .5);
+  border-radius: 1.5rem;
+  padding: 4.8rem 2.4rem 2.4rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+
+  &__content {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, rgba(map-get(variables.$colors, light), 0.01), rgba(map-get(variables.$colors, light), 0.01)), linear-gradient(to bottom, map-get(variables.$colors, dark), map-get(variables.$colors, dark));
+    padding: 2.4rem;
+    border-radius: .75rem;
+  }
+
+  >img {
+    width: 80%;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.testimonial-card {
+  width: 65rem;
+  aspect-ratio: 3 / 1;
+  padding: 3.6rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-card {
+  padding: 3.6rem;
+  padding-bottom: 7.2rem;
+  text-align: left;
+  justify-content: left;
+
+
+  & h3 {
+    width: 100%;
+  }
+
+  & img {
+    width: 100%;
+  }
+
+  & .img-container {
+    width: 100%;
+  }
+}

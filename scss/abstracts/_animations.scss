@@ -1,0 +1,19 @@
+@import '../vendors/typed';
+
+.typewriter {
+  @include typed("Digital solutions.", "Growth engines.", "Immersive UI.", "Frictionless UX.", null, (caret-width: 0.05em));
+}
+
+@keyframes pulse {
+  0% {
+    scale: 1
+  }
+
+  50% {
+    scale: 1.01
+  }
+
+  100% {
+    scale: 1;
+  }
+}

@@ -1,0 +1,115 @@
+@use "../abstracts/variables";
+
+.heading-primary {
+  font-size: 8.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: map-get(variables.$colors, light);
+}
+
+.heading-secondary {
+  font-size: 5.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+  background-image: linear-gradient(to bottom,
+      rgba(map-get(variables.$colors, light), 0.9) 75%,
+      rgba(map-get(variables.$colors, dark), 1) 100%,
+    ), ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heading-tertiary {
+  font-size: 1.6rem;
+
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(map-get(variables.$colors, light), 0.4);
+
+  &-s {
+    text-transform: none;
+    color: rgba(map-get(variables.$colors, light), 0.8);
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+
+  &-md {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-transform: none;
+    color: rgba(map-get(variables.$colors, light), 0.8);
+  }
+}
+
+.heading-quaternary {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(map-get(variables.$colors, primary-light), 1);
+}
+
+.heading-alternating {
+  background-image: linear-gradient(to bottom, rgba(map-get(variables.$colors, light), .25), rgba(map-get(variables.$colors, light), .25)),
+    map-get(variables.$gradients, primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+
+.heading-alt {
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgba(map-get(variables.$colors, light), .6);
+
+  &-s {
+    font-size: 1.8rem;
+    line-height: 1.7;
+  }
+
+  &-xs {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: rgba(map-get(variables.$colors, light), .5);
+  }
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
+.mb-5 {
+  margin-bottom: 5rem;
+}
+
+.mb-8 {
+  margin-bottom: 8rem;
+}
+
+.mt-4 {
+  margin-top: 4rem;
+}
+
+.mt-8 {
+  margin-top: 8rem;
+}
+
+.mt-12 {
+  margin-top: 12rem;
+}
