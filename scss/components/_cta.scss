@@ -1,0 +1,19 @@
+@use '../abstracts/variables';
+@use '../abstracts/animations';
+
+.cta {
+
+
+  &__description {
+    line-height: 2;
+    opacity: .8;
+    font-size: 2rem;
+  }
+
+  &__plink {
+    color: map-get(variables.$colors, primary-light);
+    position: relative;
+
+    @include animations.underline-text;
+  }
+}

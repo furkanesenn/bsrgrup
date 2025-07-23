@@ -42,8 +42,7 @@
 }
 
 .step-card {
-  padding: 3.6rem;
-  padding-bottom: 7.2rem;
+  padding: 3.2rem;
   text-align: left;
   justify-content: left;
 
@@ -58,5 +57,49 @@
 
   & .img-container {
     width: 100%;
+  }
+}
+
+.portfolio-card {
+  width: auto;
+  border-radius: 1.5rem;
+  background: url(../../dist/assets/images/portfolio/jetnet.png) no-repeat center center;
+  grid-column: span 2;
+  padding-block: 10rem;
+  padding-inline: 4rem;
+  border: 1px solid rgba(map-get(variables.$colors, primary-light), 0.5);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  & .card__content {
+    background: transparent;
+    text-align: left;
+    margin: 0;
+    margin-right: auto;
+    max-width: 50%;
+  }
+
+  &-half {
+    grid-column: span 1;
+
+    & .portfolio-logo {
+      max-width: 20rem;
+    }
+
+    & .portfolio-title {
+      font-size: 3.6rem;
+    }
+
+    & .portfolio-description {
+      font-size: 1.8rem;
+    }
+
+    & .portfolio-link {
+      font-size: 1.8rem;
+    }
+
+    & .card__content {
+      max-width: 100%;
+      margin: 0 auto;
+    }
   }
 }

@@ -40,6 +40,15 @@
   }
 }
 
+.grid-col-2-focus {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  gap: 6.4rem;
+  width: 100%;
+}
+
 .grid-layout {
   display: flex;
   justify-content: center;

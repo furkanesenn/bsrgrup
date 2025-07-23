@@ -1,0 +1,64 @@
+@use '../abstracts/variables';
+
+.custom-context-menu {
+  position: absolute;
+  z-index: 9999;
+  min-width: 200px;
+  padding: 6px 0;
+  border-radius: 12px;
+  display: none; // 👈 hide on initial load
+
+  // Glassy background
+  background-color: rgba(map-get(variables.$colors, dark), 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  // Border with primary-light tone
+  border: 1px solid map-get(variables.$colors, primary-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
+  font-size: 14px;
+  color: map-get(variables.$colors, light);
+  user-select: none;
+  overflow: hidden;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.custom-context-menu__item {
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background-color: rgba(map-get(variables.$colors, primary-light), 0.15);
+    color: map-get(variables.$colors, primary-light);
+    backdrop-filter: blur(14px);
+  }
+}
+
+.custom-context-menu__separator {
+  height: 1px;
+  margin: 6px 12px;
+  background: linear-gradient(to right,
+      transparent,
+      map-get(variables.$colors, gray100),
+      transparent);
+  opacity: 0.4;
+  border: none;
+}
+
+// Subtle fade animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

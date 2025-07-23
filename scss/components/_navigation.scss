@@ -1,4 +1,5 @@
 @use "../abstracts/variables";
+@use "../abstracts/animations";
 
 .navigation {
   display: flex;
@@ -16,17 +17,6 @@
 
   & li.active {
     color: rgba(map-get(variables.$colors, light), 0.8);
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -0.4rem;
-      left: 0;
-      width: 100%;
-      height: .75px;
-      background: map-get(variables.$gradients, outline-transition);
-      opacity: .7;
-    }
   }
 
   & li {
@@ -34,10 +24,8 @@
     position: relative;
     transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 
-    &:hover {
-      color: map-get(variables.$colors, light);
-      transform: scale(1.01) translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    &:not(li.active) {
+      @include animations.underline-text;
     }
   }
 }

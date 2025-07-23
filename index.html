@@ -7,9 +7,178 @@
 
     <link rel="stylesheet" href="./dist/css/main.css" />
 
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      window.sr = ScrollReveal({
+        origin: "left",
+        distance: "20px",
+        duration: 800,
+        delay: 200,
+        reset: true,
+      });
+
+      // Loader functionality
+
+      window.addEventListener("load", () => {
+        const loaderContainer = document.querySelector(".loader-container");
+        if (loaderContainer) {
+          setTimeout(() => {
+            loaderContainer.classList.add("loaded");
+            document.body.classList.add("loaded");
+
+            sr.reveal(".hero-title, .hero-description, .btn-set, .hero-logos");
+            sr.reveal(
+              ".services-list, .testimonial-list, .how-it-works__steps"
+            );
+            ScrollReveal().reveal(".hero-image", {
+              origin: "right",
+              distance: "20px",
+              duration: 800,
+              delay: 200,
+              reset: true,
+            });
+            ScrollReveal().reveal(".services, .testimonials", {
+              origin: "bottom",
+              distance: "20px",
+              duration: 800,
+              delay: 200,
+              reset: true,
+            });
+          }, 1000); // Adjust the timeout as needed
+        }
+      });
+    </script>
     <script src="./scripts/dev.js" type="text/javascript" defer></script>
   </head>
-  <body>
+  <body class="loaded">
+    <div class="custom-cursor"></div>
+
+    <div class="custom-context-menu" id="contextMenu">
+      <div class="custom-context-menu__item" data-action="copy">📋 Kopyala</div>
+      <div class="custom-context-menu__item" data-action="cut">✂️ Kes</div>
+      <div class="custom-context-menu__item" data-action="paste">
+        📥 Yapıştır
+      </div>
+      <div class="custom-context-menu__separator"></div>
+      <div class="custom-context-menu__item" data-action="delete">🗑 Sil</div>
+    </div>
+
+    <div class="loader-container">
+      <div class="prism-loader">
+        <div class="layer layer1"></div>
+        <div class="layer layer2"></div>
+        <div class="layer layer3"></div>
+        <div class="core"><span></span></div>
+      </div>
+    </div>
+
+    <div class="form-popup popup">
+      <div class="popup-close close-button">
+        <svg class="icon icon--close">
+          <use xlink:href="./dist/assets/icons/sprite.svg#icon-close"></use>
+        </svg>
+      </div>
+      <div class="custom-shape-divider-top-1753136738">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M1200,0H0V120H281.94C572.9,116.24,602.45,3.86,602.45,3.86h0S632,116.24,923,120h277Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+      <div class="popup__content">
+        <div class="popup__left">
+          <h2 class="popup__header">You can call us <br />anytime.</h2>
+          <p class="popup__description">
+            Our team is available 24/7 to assist you with your needs.
+          </p>
+
+          <ul class="contact-options">
+            <li class="contact-option">
+              <a href="tel:+1234567890"
+                ><svg class="icon">
+                  <use
+                    xlink:href="./dist/assets/icons/sprite.svg#icon-phone"
+                  ></use>
+                </svg>
+                <span>+1234567890</span></a
+              >
+            </li>
+            <li class="contact-option">
+              <a href="mailto:info@bsrgrup.com"
+                ><svg class="icon">
+                  <use
+                    xlink:href="./dist/assets/icons/sprite.svg#icon-mail"
+                  ></use>
+                </svg>
+                <span>info@bsrgrup.com</span></a
+              >
+            </li>
+          </ul>
+
+          <button class="btn btn--primary mt-2">Get a Detailed Quote</button>
+          <p class="info">
+            When you click the button, you will be redirected to the quote form.
+            You will be able to fill out a quick 30-sec form or a more detailed
+            form. If you have any questions, feel free to contact us via phone
+            or email.
+          </p>
+        </div>
+        <div class="popup-right">
+          <h2 class="popup__header">Or, our team can<br />call you.</h2>
+          <p class="popup__description">
+            Fill out the form below and our team will call you back within 24
+            hours.
+          </p>
+          <form class="popup__form">
+            <div class="form-group">
+              <input
+                type="text"
+                id="name"
+                placeholder="Name & Surname"
+                name="name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                name="email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Phone Number"
+                name="phone"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <input type="checkbox" name="consent" id="consent" required />
+              <label for="consent"
+                >I agree to the terms and conditions. I have read and understood
+                the privacy policy.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn--secondary">
+              Request a Call Back
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
     <header class="header">
       <nav class="navigation">
         <!-- <picture>
@@ -30,7 +199,7 @@
         </ul>
 
         <div class="nav-actions">
-          <button class="btn btn--outlined">Get Started</button>
+          <button class="btn btn--outlined popup-trigger">Get Started</button>
         </div>
       </nav>
     </header>
@@ -42,11 +211,16 @@
             <div>Crafting</div>
             <div class="heading-alternating typewriter"></div>
           </h1>
-          <p class="hero-descriptio heading-alt mb-5">
+          <p class="hero-description heading-alt mb-5">
             Crafting impactful design experiences for your brand’s growth.
           </p>
           <div class="btn-set btn-set-50">
-            <button class="btn btn--outlined btn-set-w2">Get a Quote</button>
+            <button
+              class="btn btn--outlined btn-set-w2"
+              alternating-text="Get a free quote from us now!"
+            >
+              Get a Quote
+            </button>
             <button class="btn btn--icon">
               <svg>
                 <use
@@ -89,13 +263,17 @@
             </ul>
           </div>
         </div>
-
+        <!-- 
         <div class="hero-image perspective">
           <img
             class="hero-image"
             src="./dist/assets/images/hero-decorator.svg"
             alt="Hero Image"
           />
+        </div> -->
+
+        <div id="hero-canvas-wrapper">
+          <canvas id="hero-canvas"></canvas>
         </div>
       </div>
 
@@ -357,7 +535,7 @@
 
       <div class="how-it-works grid-layout grid-layout-start mt-12">
         <div class="how-it-works__left">
-          <header class="how-it-works__header">
+          <header class="how-it-works__header mb-6">
             <div class="section-starting icon-showcase mb-4">
               <img
                 src="./dist/assets/images/section-transitions/how-it-works.svg"
@@ -365,13 +543,14 @@
               />
             </div>
             <div class="heading-secondary mb-2">
-              Our proven success path. <br />Verified with real-life scenarios.
+              Our proven success path. <br />Tested with real-life scenarios.
             </div>
             <p class="heading-alt heading-alt-s mb-8">
               We’ve been creating digital marketing campaigns, websites for
               entrepreneurs and corporate companies. Here’s how all that works.
             </p>
           </header>
+          <a href="#" class="btn btn--outlined mb-8">Get a Quote for FREE!</a>
           <div class="how-it-works__video">
             <img
               src="dist/assets/images/how-it-works/how-it-works-video.png"
@@ -438,6 +617,121 @@
           </div>
         </div>
       </div>
+
+      <div class="portfolio grid-layout grid-image">
+        <div class="section-starting icon-showcase mb-4">
+          <img
+            src="./dist/assets/images/section-transitions/portfolio.svg"
+            alt=""
+          />
+        </div>
+        <div class="heading-secondary mb-2">
+          The BSR Group difference.<br />
+          From idea to impact.
+        </div>
+        <p class="heading-alt heading-alt-s mb-8">
+          Want to see it yourself? Here are some of our selected projects that
+          made our clients <br />
+          millions (if not billions) of dollars every year. Real businesses,
+          real results.
+        </p>
+        <div class="portfolio-list grid-col-2-focus">
+          <div class="portfolio-item portfolio-card">
+            <div class="card__content">
+              <img
+                class="portfolio-logo mb-5"
+                src="./dist/assets/images/portfolio/jetnet-logo.png"
+                alt="Jetnet Logo"
+              />
+              <h3 class="portfolio-title heading-tertiary heading-tertiary-s">
+                Investment and Knowledge Transfer Between China & Turkey
+              </h3>
+              <p class="portfolio-description heading-alt heading-alt-xs">
+                Investment and Knowledge Transfer Between China & Turkey. We’ve
+                collaborated with Jetnet Global to create a stunning,
+                user-friendly landing page and ad-campaign. The results were off
+                the charts...
+              </p>
+              <a href="#" class="portfolio-link">Read more about the story.</a>
+            </div>
+          </div>
+          <div class="portfolio-item portfolio-card portfolio-card-half">
+            <div class="card__content">
+              <img
+                class="portfolio-logo mb-5"
+                src="./dist/assets/images/portfolio/jetnet-logo.png"
+                alt="Jetnet Logo"
+              />
+              <h3 class="portfolio-title heading-tertiary heading-tertiary-s">
+                Investment and Knowledge Transfer Between China & Turkey
+              </h3>
+              <p class="portfolio-description heading-alt heading-alt-xs">
+                Investment and Knowledge Transfer Between China & Turkey. We’ve
+                collaborated with Jetnet Global to create a stunning,
+                user-friendly landing page and ad-campaign. The results were off
+                the charts...
+              </p>
+              <a href="#" class="portfolio-link">Read more about the story.</a>
+            </div>
+          </div>
+          <div class="portfolio-item portfolio-card portfolio-card-half">
+            <div class="card__content">
+              <img
+                class="portfolio-logo mb-5"
+                src="./dist/assets/images/portfolio/jetnet-logo.png"
+                alt="Jetnet Logo"
+              />
+              <h3 class="portfolio-title heading-tertiary heading-tertiary-s">
+                Investment and Knowledge Transfer Between China & Turkey
+              </h3>
+              <p class="portfolio-description heading-alt heading-alt-xs">
+                Investment and Knowledge Transfer Between China & Turkey. We’ve
+                collaborated with Jetnet Global to create a stunning,
+                user-friendly landing page and ad-campaign. The results were off
+                the charts...
+              </p>
+              <a href="#" class="portfolio-link">Read more about the story.</a>
+            </div>
+          </div>
+          <!-- Repeat portfolio-item as needed -->
+        </div>
+      </div>
+
+      <div class="cta grid-layout">
+        <div class="cta__content">
+          <h2 class="cta__title heading-secondary mb-2">
+            Ready to make the first move? Get a FREE quote now!
+          </h2>
+          <p class="cta__description heading-alt heading-alt-s mb-4">
+            Every minute you wait, a new competitor is rising — getting noticed,
+            getting ahead.<br />
+            But why watch from the sidelines when you could be the one admired,
+            remembered, and trusted? <br />Stop letting time slip by.<br />
+            It’s time to transform your idea into a brand people love.<br />
+            Our expert team will personally review your project and craft a
+            tailored roadmap for your success — completely free. <br />All it
+            takes is less than a minute.<br /><a
+              class="popup-trigger cta__plink"
+              href="#"
+              >Click "Get Started" below and take the first step today.</a
+            >
+          </p>
+          <button class="btn btn--primary popup-trigger">Get Started</button>
+        </div>
+      </div>
     </main>
+
+    <footer class="footer grid-layout mt-12">
+      <div class="footer__content">
+        <p class="footer__text">© 2025 BSR Group. All rights reserved.</p>
+        <ul class="footer__links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.min.js"></script>
   </body>
 </html>

@@ -1,6 +1,10 @@
 @use "../abstracts/variables";
 
 html {
-  background-color: map-get(variables.$colors, dark);
+  // background-color: map-get(variables.$colors, dark);
   color: map-get(variables.$colors, light);
+  background-image: linear-gradient(rgba(map-get(variables.$colors, dark), .975), rgba(map-get(variables.$colors, dark), .975)),
+    url(../../dist/assets/videos/background.svg);
+  background-attachment: fixed;
+  background-size: cover;
 }

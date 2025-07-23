@@ -1,5 +1,17 @@
 @use "../abstracts/variables";
 
+@property --gradientStart {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(255, 255, 255, 0);
+}
+
+@property --gradientEnd {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(0, 0, 0, 0);
+}
+
 .btn {
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -7,6 +19,39 @@
   border-radius: 0.25rem;
   text-decoration: none;
   font-weight: 500;
+
+  &--primary {
+    background-color: map-get(variables.$colors, primary-dark);
+    color: map-get(variables.$colors, light);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2rem 6.4rem;
+    border-radius: 1000px;
+    font-size: 2rem;
+
+    &:hover {
+      background-color: map-get(variables.$colors, primaryHover);
+      color: map-get(variables.$colors, light);
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--secondary {
+    background-color: map-get(variables.$colors, dark);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+    color: map-get(variables.$colors, light);
+    padding: 2rem 3rem;
+    font-size: 1.6rem;
+    border-radius: 1000px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      background-color: map-get(variables.$colors, secondaryHover);
+      color: map-get(variables.$colors, light);
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
 
   &--outlined {
     background-color: transparent;
@@ -17,11 +62,29 @@
     border-radius: 1000px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 
-    &:hover {
+    &:not(.btn-set-w2):hover {
       background-color: map-get(variables.$colors, light);
       color: map-get(variables.$colors, dark);
       transform: scale(1.05) translateY(-2px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    &.btn-set-w2 {
+      visibility: visible;
+      position: relative;
+
+      &::after {
+        content: attr(alternating-text);
+        position: absolute;
+        top: 88%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translateY(-50%);
+        color: map-get(variables.$colors, light);
+        ;
+      }
     }
   }
 
@@ -29,6 +92,7 @@
     position: relative;
     border-radius: 1000px;
     background-image: map-get(variables.$gradients, primary);
+    z-index: 1;
 
     & svg {
       fill: map-get(variables.$colors, light);
@@ -43,22 +107,26 @@
 
 }
 
+
 .btn-set {
   display: grid;
   grid-template-rows: 7.2rem;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(5, 7.2rem);
   gap: 0;
-
-  &-50 {
-    width: 57.5%;
-  }
+  z-index: 2;
+  background-image: linear-gradient(to bottom right,
+      var(--gradientStart),
+      var(--gradientEnd));
+  transition: --gradientStart 0.3s ease, --gradientEnd 0.3s ease;
+  width: min-content;
+  border-radius: 10000px;
 
   &>* {
     height: 100%;
   }
 
   &>.btn-set-w2 {
-    grid-column: span 2;
+    grid-column: span 4;
     grid-row: 1 / -1;
   }
 
@@ -66,5 +134,35 @@
     aspect-ratio: 1 / 1;
 
     grid-row: 1 / -1;
+  }
+
+  &>.btn {
+    transition: border-radius 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  }
+
+  &:hover {
+    --gradientStart: #FF4E50;
+    --gradientEnd: #B30000;
+
+    &>.btn {
+      border-width: 0;
+      background: none;
+      color: map-get(variables.$colors, light);
+      transform: none;
+    }
+
+    &> :first-child {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+
+
+    }
+
+    &> :last-child {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+
+
+    }
   }
 }

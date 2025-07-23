@@ -4,7 +4,9 @@ $colors: (
   gray100: #949494,
   gray200: #8f8f8f,
   primary-light: #CA6263,
+  primary-dark: #B30000,
 );
+
 
 $gradients: (
   outline-transition: linear-gradient(to bottom, map-get($colors, light), map-get($colors, gray100)),

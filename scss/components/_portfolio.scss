@@ -1,0 +1,36 @@
+@use '../abstracts/variables';
+@use '../abstracts/animations';
+
+.portfolio {
+  margin: 12rem;
+
+  &-logo {
+    max-width: 30rem;
+    width: 100%;
+    height: auto;
+  }
+
+  &-title {
+    font-size: 4.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgba(map-get(variables.$colors, light), 0.9);
+    margin-bottom: 1.2rem;
+  }
+
+  &-description {
+    font-size: 2rem;
+    color: rgba(map-get(variables.$colors, light), 0.6);
+    line-height: 1.4;
+    margin-bottom: 1.6rem;
+    font-weight: 400;
+  }
+
+  &-link {
+    font-size: 2rem;
+    color: map-get(variables.$colors, primary-light);
+    position: relative;
+
+    @include animations.underline-text;
+  }
+}

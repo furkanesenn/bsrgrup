@@ -1,0 +1,30 @@
+@use '../abstracts/variables';
+@use '../abstracts/animations';
+
+.footer {
+  background-color: map-get(variables.$colors, dark);
+  color: rgba(map-get(variables.$colors, light), 0.7);
+  padding: 4rem 2rem;
+  text-align: center;
+
+  &__text {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    a {
+      color: rgba(map-get(variables.$colors, primary-light), .7);
+      text-decoration: none;
+      font-size: 1.6rem;
+
+      @include animations.underline-text;
+    }
+  }
+}

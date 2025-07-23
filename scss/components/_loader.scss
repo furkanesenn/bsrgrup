@@ -1,0 +1,153 @@
+$colors: (
+  dark: #121212,
+  light: #fafafa,
+  gray100: #949494,
+  gray200: #8f8f8f,
+  primary-light: #CA6263,
+  primary-dark: #B30000,
+);
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+body:not(.loaded) {
+  overflow: hidden;
+
+  >.loader-container {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.loader-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: color(dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* Ensure loader is on top */
+}
+
+.prism-loader {
+  width: 15rem;
+  height: 15rem;
+  position: relative;
+  perspective: 1200px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.core span {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loader-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    /* Radial glow */
+    radial-gradient(circle at center, rgba(#CA6263, 0.4) 0%, rgba(#121212, 0.3) 60%),
+
+    /* Linear sweeping light gradient */
+    linear-gradient(135deg, rgba(#B30000, 0.5), rgba(#CA6263, 0.2), rgba(#121212, 0.6)),
+
+    /* Noise overlay texture */
+    url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+
+  background-blend-mode: screen, overlay, normal;
+  filter: blur(1px) contrast(1.1);
+  z-index: -1;
+  opacity: 0.05;
+}
+
+
+.layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid color(primary-dark);
+  border-radius: 20% 80% 30% 70% / 70% 30% 80% 20%;
+  animation: spin3d 6s linear infinite;
+  box-shadow: 0 0 20px rgba(179, 0, 0, 0.4);
+  transform-style: preserve-3d;
+}
+
+.layer2 {
+  animation-delay: -2s;
+  border-color: color(primary-light);
+  box-shadow: 0 0 20px rgba(202, 98, 99, 0.4);
+}
+
+.layer3 {
+  animation-delay: -4s;
+  border-color: color(gray100);
+  box-shadow: 0 0 15px rgba(148, 148, 148, 0.2);
+}
+
+.core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  background: linear-gradient(135deg, color(primary-light), color(primary-dark));
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(202, 98, 99, 0.8);
+  animation: core-pulse 1.5s ease-in-out infinite;
+}
+
+
+@keyframes spin3d {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+  }
+}
+
+@keyframes core-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}

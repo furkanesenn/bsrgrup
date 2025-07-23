@@ -18,7 +18,9 @@ body {
   vertical-align: baseline;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
+
 
 a {
   text-decoration: none;
@@ -56,4 +58,25 @@ textarea {
 
 @media (prefers-color-scheme: dark) {
   // Will be used for dark mode styles
+}
+
+input,
+textarea {
+  caret-color: map-get($colors, primary-dark);
+  background-color: map-get($colors, dark);
+  color: map-get($colors, light);
+  border: 1px solid map-get($colors, gray100);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: map-get($colors, primary-light);
+    box-shadow: 0 0 0 2px rgba(202, 98, 99, 0.4); // subtle red glow
+  }
+
+  &::selection {
+    background: map-get($colors, primary-light);
+    color: map-get($colors, light);
+  }
 }
